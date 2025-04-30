@@ -8,9 +8,7 @@
   --btnsec: #e9dffd;
 }
 
-/* a {
-  color: var(--btnprim) !important;
-}  */
+
 
 .btn-primary {
   background-color: var(--btnprim) !important;
