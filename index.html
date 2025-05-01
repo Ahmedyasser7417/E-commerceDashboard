@@ -60,12 +60,12 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="products.html" class="nav-item nav-link"><i class="fa-solid fa-grip-vertical me-2"></i>Products</a>
-                    <a href="orders.html" class="nav-item nav-link"><i class="fa-solid fa-check"></i>Orders</a>
-                    <a href="analytics.html" class="nav-item nav-link"><i class="fa-solid fa-chart-simple"></i>Analytics</a>
-                    <a href="users.html" class="nav-item nav-link"><i class="fa-solid fa-user me-2"></i>Users</a>
-                    <a href="categories.html" class="nav-item nav-link"><i class="fa-solid fa-list me-2"></i>Categories</a>
+                    <a href="#" class="nav-item nav-link active" data-section="dashboard"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="#" class="nav-item nav-link" data-section="products"><i class="fa-solid fa-grip-vertical me-2"></i>Products</a>
+                    <a href="#" class="nav-item nav-link" data-section="orders"><i class="fa-solid fa-check"></i>Orders</a>
+                    <a href="#" class="nav-item nav-link" data-section="analytics"><i class="fa-solid fa-chart-simple"></i>Analytics</a>
+                    <a href="#" class="nav-item nav-link" data-section="users"><i class="fa-solid fa-user me-2"></i>Users</a>
+                    <a href="#" class="nav-item nav-link" data-section="categories"><i class="fa-solid fa-list me-2"></i>Categories</a>
                     
                 </div>
             </nav>
@@ -163,148 +163,797 @@
             </nav> 
             <!-- Navbar End -->
 
-            <!-- Sale & Revenue Start -->
-            <div class="container-fluid pt-4 px-4 ">
-                <div class="row g-4">
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-line fa-3x" style="color: #915ef6;"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Today Sale</p>
-                                <h6 class="mb-0">$1234</h6>
+            <div id="dashboard-section" class="section">
+                <!-- Sale & Revenue Start -->
+                <div class="container-fluid pt-4 px-4 ">
+                    <div class="row g-4">
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                                <i class="fa fa-chart-line fa-3x" style="color: #915ef6;"></i>
+                                <div class="ms-3">
+                                    <p class="mb-2">Today Sale</p>
+                                    <h6 class="mb-0">$1234</h6>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-bar fa-3x" style="color: #915ef6;"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Total Sale</p>
-                                <h6 class="mb-0">$1234</h6>
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                                <i class="fa fa-chart-bar fa-3x" style="color: #915ef6;"></i>
+                                <div class="ms-3">
+                                    <p class="mb-2">Total Sale</p>
+                                    <h6 class="mb-0">$1234</h6>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-area fa-3x" style="color: #915ef6;"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Today Revenue</p>
-                                <h6 class="mb-0">$1234</h6>
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                                <i class="fa fa-chart-area fa-3x" style="color: #915ef6;"></i>
+                                <div class="ms-3">
+                                    <p class="mb-2">Today Revenue</p>
+                                    <h6 class="mb-0">$1234</h6>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-pie fa-3x" style="color: #915ef6;"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Total Revenue</p>
-                                <h6 class="mb-0">$1234</h6>
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                                <i class="fa fa-chart-pie fa-3x" style="color: #915ef6;"></i>
+                                <div class="ms-3">
+                                    <p class="mb-2">Total Revenue</p>
+                                    <h6 class="mb-0">$1234</h6>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Sale & Revenue End -->
+                <!-- Sale & Revenue End -->
 
-
-            <!-- Sales Chart Start -->
-            <div class="container-fluid pt-4 px-4 charts">
-                <div class="row g-4">
-                    <div class="col-sm-12 col-xl-6 ">
-                        <div class="bg-light text-center rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Sales</h6>
-                                <a href="">Show All</a>
+                <!-- Sales Chart Start -->
+                <div class="container-fluid pt-4 px-4 charts">
+                    <div class="row g-4">
+                        <div class="col-sm-12 col-xl-6 ">
+                            <div class="bg-light text-center rounded p-4">
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <h6 class="mb-0">Sales</h6>
+                                    <a href="">Show All</a>
+                                </div>
+                                <canvas id="worldwide-sales"></canvas>
                             </div>
-                            <canvas id="worldwide-sales"></canvas>
                         </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-light text-center rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Users</h6>
-                                <a href="">Show All</a>
+                        <div class="col-sm-12 col-xl-6">
+                            <div class="bg-light text-center rounded p-4">
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <h6 class="mb-0">Users</h6>
+                                    <a href="">Show All</a>
+                                </div>
+                                <canvas id="salse-revenue"></canvas>
                             </div>
-                            <canvas id="salse-revenue"></canvas>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Sales Chart End -->
+                <!-- Sales Chart End -->
 
-
-            <!-- Recent Sales Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="bg-light text-center rounded p-4 charts">
-                    <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Recent Salse</h6>
-                        <a href="">Show All</a>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table text-start align-middle table-bordered table-hover mb-0">
-                            <thead>
-                                <tr class="text-dark">
-                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Invoice</th>
-                                    <th scope="col">Customer</th>
-                                    <th scope="col">Amount</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <!-- Recent Sales Start -->
+                <div class="container-fluid pt-4 px-4">
+                    <div class="bg-light text-center rounded p-4 charts">
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <h6 class="mb-0">Recent Salse</h6>
+                            <a href="">Show All</a>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                                <thead>
+                                    <tr class="text-dark">
+                                        <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Invoice</th>
+                                        <th scope="col">Customer</th>
+                                        <th scope="col">Amount</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input class="form-check-input" type="checkbox"></td>
+                                        <td>01 Jan 2045</td>
+                                        <td>INV-0123</td>
+                                        <td>Jhon Doe</td>
+                                        <td>$123</td>
+                                        <td>Paid</td>
+                                        <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input class="form-check-input" type="checkbox"></td>
+                                        <td>01 Jan 2045</td>
+                                        <td>INV-0123</td>
+                                        <td>Jhon Doe</td>
+                                        <td>$123</td>
+                                        <td>Paid</td>
+                                        <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input class="form-check-input" type="checkbox"></td>
+                                        <td>01 Jan 2045</td>
+                                        <td>INV-0123</td>
+                                        <td>Jhon Doe</td>
+                                        <td>$123</td>
+                                        <td>Paid</td>
+                                        <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input class="form-check-input" type="checkbox"></td>
+                                        <td>01 Jan 2045</td>
+                                        <td>INV-0123</td>
+                                        <td>Jhon Doe</td>
+                                        <td>$123</td>
+                                        <td>Paid</td>
+                                        <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input class="form-check-input" type="checkbox"></td>
+                                        <td>01 Jan 2045</td>
+                                        <td>INV-0123</td>
+                                        <td>Jhon Doe</td>
+                                        <td>$123</td>
+                                        <td>Paid</td>
+                                        <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
+                <!-- Recent Sales End -->
             </div>
-            <!-- Recent Sales End -->
+<!-----------------  products Start --------------->
+            <div id="products-section" class="section" style="display:none;">
+                <!-- <h2>Products</h2>
+                <p>Products content goes here.</p> -->
+                <h1 class="text-center mt-5 mb-3  ">
+                    Items
+                </h1>
+                <div class="add">
+                    <button type="button" class="btn btn-success "
+                        data-bs-toggle="modal"
+                        href="#exampleModalToggleAddNewUser"
+                        role="button">Add new item
+                    </button>
+                </div>
+
+                <div class="pt-5 containerTable">
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th scope="col">Item</th>
+                                <th scope="col">Item name</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Description </th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Operations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class>
+                                <th class="pt-3" scope="row">1</th>
+                                <td class="pt-3">Trousers</td>
+                                <td class="pt-3">Clothing</td>
+                                <td class="pt-3">Men's jeans black trousers</td>
+                                <td class="pt-3 ">50$</td>
+                                <td>
+                                    <button type="button"
+                                        class="btn btn-primary m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleShowFirstName"
+                                        role="button">Show</button>
+                                    <button type="button"
+                                        class="btn btn-warning m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleEditFirstName"
+                                        role="button">Edit</button>
+                                    <button type="button"
+                                        class="btn btn-danger m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleDeleteFirstName"
+                                        role="button">Delete</button>
+                                </td>
+                            </tr>
+                            <tr class>
+                                <th class="pt-3" scope="row">2</th>
+                                <td class="pt-3">T-shirt</td>
+                                <td class="pt-3">Clothing</td>
+                                <td class="pt-3">Women's green T-shirt</td>
+                                <td class="pt-3 ">50$</td>
+                                <td>
+                                    <button type="button"
+                                        class="btn btn-primary m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleShowSecondName"
+                                        role="button">Show</button>
+                                    <button type="button"
+                                        class="btn btn-warning m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleEditSecondName"
+                                        role="button">Edit</button>
+                                    <button type="button"
+                                        class="btn btn-danger m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleDeleteSecondName"
+                                        role="button">Delete</button>
+                                </td>
+                            </tr>
+                            <tr class>
+                                <th class="pt-3" scope="row">3</th>
+                                <td class="pt-3">Cap</td>
+                                <td class="pt-3">Clothing</td>
+                                <td class="pt-3">Red headdress</td>
+                                <td class="pt-3 ">50$</td>
+                                <td>
+                                    <button type="button"
+                                        class="btn btn-primary m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleShowThirdName"
+                                        role="button">Show</button>
+                                    <button type="button"
+                                        class="btn btn-warning m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleEditThirdName"
+                                        role="button">Edit</button>
+                                    <button type="button"
+                                        class="btn btn-danger m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleDeleteThirdName"
+                                        role="button">Delete</button>
+                                </td>
+                            </tr>
+                        
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="d-flex justify-content-center mt-4">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#"
+                                    aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link"
+                                    href="#">1</a></li>
+                            <li class="page-item"><a class="page-link"
+                                    href="#">2</a></li>
+                            <li class="page-item"><a class="page-link"
+                                    href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-----------------  products End --------------->
+
+            <!-----------------  orders Start --------------->
+            <div id="orders-section" class="section" style="display:none;">
+                <h1 class="text-center mt-5 mb-3  ">
+                    Orders
+                </h1>
+
+                <div class="add">
+                    <button type="button" class="btn btn-success "
+                        data-bs-toggle="modal"
+                        href="#exampleModalToggleAddNewUser"
+                        role="button">Add new item
+                    </button>
+                </div>
+
+                <div class="pt-5 containerTable">
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th scope="col">Item</th>
+                                <th scope="col">Item name</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Description </th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Operations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class>
+                                <th class="pt-3" scope="row">1</th>
+                                <td class="pt-3">Trousers</td>
+                                <td class="pt-3">Clothing</td>
+                                <td class="pt-3">Men's jeans black trousers</td>
+                                <td class="pt-3 ">50$</td>
+                                <td>
+                                    <button type="button"
+                                        class="btn btn-primary m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleShowFirstName"
+                                        role="button">Show</button>
+                                    <button type="button"
+                                        class="btn btn-warning m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleEditFirstName"
+                                        role="button">Edit</button>
+                                    <button type="button"
+                                        class="btn btn-danger m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleDeleteFirstName"
+                                        role="button">Delete</button>
+                                </td>
+                            </tr>
+                            <tr class>
+                                <th class="pt-3" scope="row">2</th>
+                                <td class="pt-3">T-shirt</td>
+                                <td class="pt-3">Clothing</td>
+                                <td class="pt-3">Women's green T-shirt</td>
+                                <td class="pt-3 ">50$</td>
+                                <td>
+                                    <button type="button"
+                                        class="btn btn-primary m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleShowSecondName"
+                                        role="button">Show</button>
+                                    <button type="button"
+                                        class="btn btn-warning m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleEditSecondName"
+                                        role="button">Edit</button>
+                                    <button type="button"
+                                        class="btn btn-danger m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleDeleteSecondName"
+                                        role="button">Delete</button>
+                                </td>
+                            </tr>
+                            <tr class>
+                                <th class="pt-3" scope="row">3</th>
+                                <td class="pt-3">Cap</td>
+                                <td class="pt-3">Clothing</td>
+                                <td class="pt-3">Red headdress</td>
+                                <td class="pt-3 ">50$</td>
+                                <td>
+                                    <button type="button"
+                                        class="btn btn-primary m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleShowThirdName"
+                                        role="button">Show</button>
+                                    <button type="button"
+                                        class="btn btn-warning m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleEditThirdName"
+                                        role="button">Edit</button>
+                                    <button type="button"
+                                        class="btn btn-danger m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleDeleteThirdName"
+                                        role="button">Delete</button>
+                                </td>
+                            </tr>
+                        
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="d-flex justify-content-center mt-4">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#"
+                                    aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link"
+                                    href="#">1</a></li>
+                            <li class="page-item"><a class="page-link"
+                                    href="#">2</a></li>
+                            <li class="page-item"><a class="page-link"
+                                    href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-----------------  orders End --------------->
+
+            <!-----------------  analytics Start --------------->
+
+            <div id="analytics-section" class="section" style="display:none;">
+                <h1 class="text-center mt-5 mb-3  ">
+                    Analytics
+                </h1>
+
+                <div class="add">
+                    <button type="button" class="btn btn-success "
+                        data-bs-toggle="modal"
+                        href="#exampleModalToggleAddNewUser"
+                        role="button">Add new item
+                    </button>
+                </div>
+
+                <div class="pt-5 containerTable">
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th scope="col">Item</th>
+                                <th scope="col">Item name</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Description </th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Operations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class>
+                                <th class="pt-3" scope="row">1</th>
+                                <td class="pt-3">Trousers</td>
+                                <td class="pt-3">Clothing</td>
+                                <td class="pt-3">Men's jeans black trousers</td>
+                                <td class="pt-3 ">50$</td>
+                                <td>
+                                    <button type="button"
+                                        class="btn btn-primary m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleShowFirstName"
+                                        role="button">Show</button>
+                                    <button type="button"
+                                        class="btn btn-warning m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleEditFirstName"
+                                        role="button">Edit</button>
+                                    <button type="button"
+                                        class="btn btn-danger m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleDeleteFirstName"
+                                        role="button">Delete</button>
+                                </td>
+                            </tr>
+                            <tr class>
+                                <th class="pt-3" scope="row">2</th>
+                                <td class="pt-3">T-shirt</td>
+                                <td class="pt-3">Clothing</td>
+                                <td class="pt-3">Women's green T-shirt</td>
+                                <td class="pt-3 ">50$</td>
+                                <td>
+                                    <button type="button"
+                                        class="btn btn-primary m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleShowSecondName"
+                                        role="button">Show</button>
+                                    <button type="button"
+                                        class="btn btn-warning m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleEditSecondName"
+                                        role="button">Edit</button>
+                                    <button type="button"
+                                        class="btn btn-danger m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleDeleteSecondName"
+                                        role="button">Delete</button>
+                                </td>
+                            </tr>
+                            <tr class>
+                                <th class="pt-3" scope="row">3</th>
+                                <td class="pt-3">Cap</td>
+                                <td class="pt-3">Clothing</td>
+                                <td class="pt-3">Red headdress</td>
+                                <td class="pt-3 ">50$</td>
+                                <td>
+                                    <button type="button"
+                                        class="btn btn-primary m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleShowThirdName"
+                                        role="button">Show</button>
+                                    <button type="button"
+                                        class="btn btn-warning m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleEditThirdName"
+                                        role="button">Edit</button>
+                                    <button type="button"
+                                        class="btn btn-danger m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleDeleteThirdName"
+                                        role="button">Delete</button>
+                                </td>
+                            </tr>
+                        
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="d-flex justify-content-center mt-4">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#"
+                                    aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link"
+                                    href="#">1</a></li>
+                            <li class="page-item"><a class="page-link"
+                                    href="#">2</a></li>
+                            <li class="page-item"><a class="page-link"
+                                    href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-----------------  analytics End --------------->
+
+            <!-----------------  users Start --------------->
+            <div id="users-section" class="section" style="display:none;">
+                <h1 class="text-center mt-5 mb-3  ">
+                    System users
+                </h1>
+
+                <div class="add">
+                    <button type="button" class="btn btn-success " data-bs-toggle="modal"
+                    href="#exampleModalToggleAddNewUser"
+                    role="button">Add new user
+                        </button>
+                </div>
+
+                <div class="pt-5 containerTable">
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th scope="col">User</th>
+                                <th scope="col">User name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Operations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr class>
+                                <th class="pt-3" scope="row">2</th>
+                                <td class="pt-3">Topy</td>
+                                <td class="pt-3">topy558@gmail.com</td>
+                                <td class="pt-3">Male</td>
+                                <td class="pt-3 ">Active</td>
+                                <td>
+                                    <button type="button"
+                                        class="btn btn-primary"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleShowSecondName"
+                                        role="button">Show</button>
+                                    <button type="button"
+                                        class="btn btn-warning"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleEditSecondName"
+                                        role="button">Edit</button>
+                                    <button type="button"
+                                        class="btn btn-danger"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleDeleteSecondName"
+                                        role="button">Delete</button>
+                                </td>
+                            </tr>
+                            <tr class>
+                                <th class="pt-3" scope="row">3</th>
+                                <td class="pt-3">Rix</td>
+                                <td class="pt-3">rix285@gmail.com</td>
+                                <td class="pt-3">Male</td>
+                                <td class="pt-3 ">Not active</td>
+                                <td>
+                                    <button type="button"
+                                        class="btn btn-primary"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleShowThirdName"
+                                        role="button">Show</button>
+                                    <button type="button"
+                                        class="btn btn-warning"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleEditThirdName"
+                                        role="button">Edit</button>
+                                    <button type="button"
+                                        class="btn btn-danger"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleDeleteThirdName"
+                                        role="button">Delete</button>
+                                </td>
+                            </tr>
+
+                            <tr class>
+                                <th class="pt-3" scope="row">1</th>
+                                <td class="pt-3">Mark</td>
+                                <td class="pt-3">mark250@gmail.com</td>
+                                <td class="pt-3">Male</td>
+                                <td class="pt-3">Active</td>
+                                <td>
+                                    <button type="button"
+                                        class="btn btn-primary"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleShowFirstName"
+                                        role="button">Show</button>
+                                    <button type="button"
+                                        class="btn btn-warning"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleEditFirstName"
+                                        role="button">Edit</button>
+                                    <button type="button"
+                                        class="btn btn-danger"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleDeleteFirstName"
+                                        role="button">Delete</button>
+                                </td>
+                            </tr>
+                            
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="d-flex justify-content-center mt-4">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#"
+                                    aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link"
+                                    href="#">1</a></li>
+                            <li class="page-item"><a class="page-link"
+                                    href="#">2</a></li>
+                            <li class="page-item"><a class="page-link"
+                                    href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-----------------  users End --------------->
+
+            <!-----------------  categories Start --------------->
+            <div id="categories-section" class="section" style="display:none;">
+                <h1 class="text-center mt-5 mb-3  ">
+                    Categories
+                </h1>
+    
+                <div class="add">
+                    <button type="button" class="btn btn-success "
+                        data-bs-toggle="modal"
+                        href="#exampleModalToggleAddNewCate"
+                        role="button">Add new category
+                        </button>
+                </div>
+    
+                <div class="pt-5 containerTable">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Category</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description </th>
+                                <th scope="col">Operations </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class>
+                                <th class="pt-3" scope="row">1</th>
+                                <td class="pt-3">Clothing</td>
+                                <td class="pt-3 desCat">Clothing men's and women's, hats and shoes</td>
+                                <td>
+                                    <button type="button"
+                                        class="btn btn-primary m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleShowFirstCate"
+                                        role="button">Show</button>
+                                    <button type="button"
+                                        class="btn btn-warning m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleEditFirstCate"
+                                        role="button">Edit</button>
+                                    <button type="button"
+                                        class="btn btn-danger m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleDeleteFirstCate"
+                                        role="button">Delete</button>
+                                </td>
+                            </tr>
+                            <tr class>
+                                <th class="pt-3" scope="row">2</th>
+                                <td class="pt-3">Laptop</td>
+                                <td class="pt-3 desCat">Laptops of all kinds , versions and companies</td>
+                                <td>
+                                    <button type="button"
+                                        class="btn btn-primary m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleShowSecondName"
+                                        role="button">Show</button>
+                                    <button type="button"
+                                        class="btn btn-warning m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleEditSecondName"
+                                        role="button">Edit</button>
+                                    <button type="button"
+                                        class="btn btn-danger m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleDeleteSecondName"
+                                        role="button">Delete</button>
+                                </td>
+                            </tr>
+                            <tr class>
+                                <th class="pt-3" scope="row">3</th>
+                                <td class="pt-3">Accessories </td>
+                                <td class="pt-3 desCat">Accessories men's and women's such as bracelets and glasses</td>
+                                <td>
+                                    <button type="button"
+                                        class="btn btn-primary m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleShowThirdName"
+                                        role="button">Show</button>
+                                    <button type="button"
+                                        class="btn btn-warning m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleEditThirdName"
+                                        role="button">Edit</button>
+                                    <button type="button"
+                                        class="btn btn-danger m-1"
+                                        data-bs-toggle="modal"
+                                        href="#exampleModalToggleDeleteThirdName"
+                                        role="button">Delete</button>
+                                </td>
+                            </tr>
+                        
+    
+                        </tbody>
+                    </table>
+    
+                </div>
+                <div class="d-flex justify-content-center mt-4">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#"
+                                    aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link"
+                                    href="#">1</a></li>
+                            <li class="page-item"><a class="page-link"
+                                    href="#">2</a></li>
+                            <li class="page-item"><a class="page-link"
+                                    href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-----------------  categories End --------------->
         </div>
         <!-- Content End -->
     </div>
@@ -322,6 +971,27 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    <script>
+    document.querySelectorAll('.nav-item.nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Remove 'active' from all links
+            document.querySelectorAll('.nav-item.nav-link').forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+            // Show spinner
+            document.getElementById('spinner').classList.add('show');
+            // Hide all sections immediately
+            document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
+            // After a short delay, hide spinner and show the selected section
+            setTimeout(() => {
+                document.getElementById('spinner').classList.remove('show');
+                const section = this.getAttribute('data-section');
+                document.getElementById(section + '-section').style.display = 'block';
+            }, 500); // 500ms delay, adjust as needed
+        });
+    });
+    </script>
 </body>
 
 </html>
