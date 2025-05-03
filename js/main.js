@@ -2,11 +2,13 @@
 // Sample user data for testing
 const users = [
     {
+        username: 'user',
         email: 'test@example.com',
         password: '123456',
         role: 'user'
     },
     {
+        username: 'admin',
         email: 'admin@example.com', 
         password: 'admin123',
         role: 'admin'
@@ -225,14 +227,14 @@ $(document).ready(function() {
         new Chart(ctx, {
             type: "doughnut",
         data: {
-            labels: ["Italy", "France", "Spain"],
+            labels: ["Users", "Sellers", "Admins"],
             datasets: [{
                 backgroundColor: [
                     "#915ef6",
                     "#3b285f",
                     "#327aff"
                 ],
-                data: [55, 49, 44]
+                data: [60, 20, 20]
             }]
         },
         options: {
@@ -272,4 +274,224 @@ $(document).ready(function() {
     
     
 })(jQuery);
+
+// Sidebar navigation script 
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.nav-item.nav-link, .chart-header').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Remove 'active' from all links
+            document.querySelectorAll('.nav-item.nav-link, .chart-header').forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+            // If a chart-header is clicked, also activate the corresponding sidebar link
+            if (this.classList.contains('chart-header')) {
+                const section = this.getAttribute('data-section');
+                const sidebarLink = document.querySelector('.nav-item.nav-link[data-section="' + section + '"]');
+                if (sidebarLink) {
+                    sidebarLink.classList.add('active');
+                }
+            }
+            // Show spinner
+            document.getElementById('spinner').classList.add('show');
+            // Hide all sections immediately
+            document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
+            // After a short delay, hide spinner and show the selected section
+            setTimeout(() => {
+                document.getElementById('spinner').classList.remove('show');
+                const section = this.getAttribute('data-section');
+                document.getElementById(section + '-section').style.display = 'block';
+            }, 500); // 500ms delay, adjust as needed
+        });
+    });
+});
+
+// User Management System
+class UserManager {
+    constructor() {
+        // Initialize with sample data if no users exist
+        if (!localStorage.getItem('users')) {
+            this.users = [
+                { username: 'admin1', email: 'admin1@example.com', password: 'admin123', role: 'admin' },
+                { username: 'merchant1', email: 'merchant1@example.com', password: 'merchant123', role: 'merchant' },
+                { username: 'user1', email: 'user1@example.com', password: 'user123', role: 'user' }
+            ];
+            this.saveUsers();
+        } else {
+            this.users = JSON.parse(localStorage.getItem('users'));
+        }
+        
+        this.currentUser = null;
+        this.initializeEventListeners();
+        this.renderUsers();
+    }
+
+    initializeEventListeners() {
+        // Add User Form Submit
+        const userForm = document.getElementById('userForm');
+        if (userForm) {
+            userForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                this.handleUserSubmit();
+            });
+        }
+
+        // Search functionality
+        const searchButton = document.querySelector('.input-group .btn-outline-secondary');
+        if (searchButton) {
+            searchButton.addEventListener('click', () => this.handleSearch());
+        }
+
+        // Delete user event delegation
+        const tbody = document.querySelector('tbody');
+        if (tbody) {
+            tbody.addEventListener('click', (e) => {
+                if (e.target.closest('.dropdown-item.text-danger')) {
+                    const row = e.target.closest('tr');
+                    const username = row.cells[1].textContent;
+                    this.deleteUser(username);
+                }
+            });
+
+            // Edit user event delegation
+            tbody.addEventListener('click', (e) => {
+                if (e.target.closest('.dropdown-item:not(.text-danger)')) {
+                    const row = e.target.closest('tr');
+                    const username = row.cells[1].textContent;
+                    this.editUser(username);
+                }
+            });
+        }
+    }
+
+    handleUserSubmit() {
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const role = document.getElementById('role').value;
+
+        if (!username || !email || !password || !role) {
+            alert('Please fill in all fields');
+            return;
+        }
+
+        if (this.currentUser) {
+            // Update existing user
+            const userIndex = this.users.findIndex(u => u.username === this.currentUser.username);
+            if (userIndex !== -1) {
+                this.users[userIndex] = { username, email, password, role };
+            }
+            this.currentUser = null;
+        } else {
+            // Check if username already exists
+            if (this.users.some(u => u.username === username)) {
+                alert('Username already exists');
+                return;
+            }
+            // Add new user
+            this.users.push({ username, email, password, role });
+        }
+
+        this.saveUsers();
+        this.renderUsers();
+        this.resetForm();
+        const modal = bootstrap.Modal.getInstance(document.getElementById('userModal'));
+        if (modal) {
+            modal.hide();
+        }
+    }
+
+    handleSearch() {
+        const searchInputs = document.querySelectorAll('.input-group input');
+        const searchTerms = Array.from(searchInputs).map(input => input.value.toLowerCase());
+
+        const filteredUsers = this.users.filter(user => {
+            return (
+                user.username.toLowerCase().includes(searchTerms[0]) &&
+                user.email.toLowerCase().includes(searchTerms[1]) &&
+                user.role.toLowerCase().includes(searchTerms[2])
+            );
+        });
+
+        this.renderUsers(filteredUsers);
+    }
+
+    deleteUser(username) {
+        if (confirm('Are you sure you want to delete this user?')) {
+            this.users = this.users.filter(user => user.username !== username);
+            this.saveUsers();
+            this.renderUsers();
+        }
+    }
+
+    editUser(username) {
+        const user = this.users.find(u => u.username === username);
+        if (user) {
+            this.currentUser = user;
+            document.getElementById('username').value = user.username;
+            document.getElementById('email').value = user.email;
+            document.getElementById('password').value = user.password;
+            document.getElementById('role').value = user.role;
+            
+            document.getElementById('userModalLabel').textContent = 'Edit User';
+            const modal = new bootstrap.Modal(document.getElementById('userModal'));
+            modal.show();
+        }
+    }
+
+    resetForm() {
+        const form = document.getElementById('userForm');
+        if (form) {
+            form.reset();
+        }
+        document.getElementById('userModalLabel').textContent = 'Add User';
+    }
+
+    saveUsers() {
+        localStorage.setItem('users', JSON.stringify(this.users));
+    }
+
+    renderUsers(usersToRender = this.users) {
+        const tbody = document.querySelector('tbody');
+        if (!tbody) return;
+
+        tbody.innerHTML = '';
+
+        usersToRender.forEach(user => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td><input type="checkbox"></td>
+                <td>${user.username}</td>
+                <td>${user.email}</td>
+                <td><span class="badge ${this.getRoleBadgeClass(user.role)}">${user.role}</span></td>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-light" data-bs-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="fa fa-edit me-2"></i>Edit</a></li>
+                            <li><a class="dropdown-item text-danger" href="#"><i class="fa fa-trash me-2"></i>Delete</a></li>
+                        </ul>
+                    </div>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    getRoleBadgeClass(role) {
+        switch (role.toLowerCase()) {
+            case 'admin':
+                return 'bg-primary';
+            case 'merchant':
+                return 'bg-success';
+            default:
+                return 'bg-secondary';
+        }
+    }
+}
+
+// Initialize the UserManager when the DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new UserManager();
+});
 
