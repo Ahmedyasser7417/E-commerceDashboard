@@ -77,7 +77,6 @@
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
                 <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
-                    <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
                 </a>
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa-solid fa-bars" style="color: black;"></i>
@@ -211,23 +210,23 @@
                 <!-- Sales Chart Start -->
                 <div class="container-fluid pt-4 px-4 charts">
                     <div class="row g-4">
-                        <div class="col-sm-12 col-xl-6 ">
-                            <div class="bg-light text-center rounded p-4">
-                                <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <h6 class="mb-0">Sales</h6>
-                                    <a href="#" class="chart-header" data-section="orders">Show All</a>
-                                    <!-- <a href="">Show All</a> -->
-                                </div>
-                                <canvas id="worldwide-sales"></canvas>
-                            </div>
-                        </div>
+                        
                         <div class="col-sm-12 col-xl-6">
                             <div class="bg-light text-center rounded p-4">
                                 <div class="d-flex align-items-center justify-content-between mb-4">
                                     <h6 class="mb-0">Users</h6>
                                     <a href="#" class="chart-header" data-section="users">Show All</a>
                                 </div>
-                                <canvas id="salse-revenue"></canvas>
+                                <canvas class="salse-revenue"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-xl-6 " style="height: 270px;">
+                            <div class="bg-light text-center rounded p-4 h-100">
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <h6 class="mb-0">Sales</h6>
+                                    <a href="#" class="chart-header" data-section="orders">Show All</a>
+                                </div>
+                                <canvas class="doughnut-chart"></canvas>
                             </div>
                         </div>
                     </div>
@@ -444,15 +443,6 @@
                 <h1 class="text-center mt-5 mb-3  ">
                     Orders
                 </h1>
-
-                <div class="add">
-                    <button type="button" class="btn btn-success "
-                        data-bs-toggle="modal"
-                        href="#exampleModalToggleAddNewUser"
-                        role="button">Add new item
-                    </button>
-                </div>
-
                 <div class="pt-5 containerTable">
                     <table class="table ">
                         <thead>
@@ -577,133 +567,388 @@
                     Analytics
                 </h1>
 
-                <div class="add">
-                    <button type="button" class="btn btn-success "
-                        data-bs-toggle="modal"
-                        href="#exampleModalToggleAddNewUser"
-                        role="button">Add new item
-                    </button>
+                <!-- Sale & Revenue Start -->
+                <div class="container-fluid pt-4 px-4 ">
+                    <div class="row g-4">
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                                <i class="fa fa-chart-line fa-3x" style="color: #915ef6;"></i>
+                                <div class="ms-3">
+                                    <p class="mb-2">Today Sale</p>
+                                    <h6 class="mb-0">$1234</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                                <i class="fa fa-chart-bar fa-3x" style="color: #915ef6;"></i>
+                                <div class="ms-3">
+                                    <p class="mb-2">Total Sale</p>
+                                    <h6 class="mb-0">$1234</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                                <i class="fa fa-chart-area fa-3x" style="color: #915ef6;"></i>
+                                <div class="ms-3">
+                                    <p class="mb-2">Today Revenue</p>
+                                    <h6 class="mb-0">$1234</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                                <i class="fa fa-chart-pie fa-3x" style="color: #915ef6;"></i>
+                                <div class="ms-3">
+                                    <p class="mb-2">Total Revenue</p>
+                                    <h6 class="mb-0">$1234</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <!-- Sale & Revenue End -->
 
-                <div class="pt-5 containerTable">
-                    <table class="table ">
-                        <thead>
-                            <tr>
-                                <th scope="col">Item</th>
-                                <th scope="col">Item name</th>
-                                <th scope="col">Category</th>
-                                <th scope="col">Description </th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Operations</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class>
-                                <th class="pt-3" scope="row">1</th>
-                                <td class="pt-3">Trousers</td>
-                                <td class="pt-3">Clothing</td>
-                                <td class="pt-3">Men's jeans black trousers</td>
-                                <td class="pt-3 ">50$</td>
-                                <td>
-                                    <button type="button"
-                                        class="btn btn-primary m-1"
-                                        data-bs-toggle="modal"
-                                        href="#exampleModalToggleShowFirstName"
-                                        role="button">Show</button>
-                                    <button type="button"
-                                        class="btn btn-warning m-1"
-                                        data-bs-toggle="modal"
-                                        href="#exampleModalToggleEditFirstName"
-                                        role="button">Edit</button>
-                                    <button type="button"
-                                        class="btn btn-danger m-1"
-                                        data-bs-toggle="modal"
-                                        href="#exampleModalToggleDeleteFirstName"
-                                        role="button">Delete</button>
-                                </td>
-                            </tr>
-                            <tr class>
-                                <th class="pt-3" scope="row">2</th>
-                                <td class="pt-3">T-shirt</td>
-                                <td class="pt-3">Clothing</td>
-                                <td class="pt-3">Women's green T-shirt</td>
-                                <td class="pt-3 ">50$</td>
-                                <td>
-                                    <button type="button"
-                                        class="btn btn-primary m-1"
-                                        data-bs-toggle="modal"
-                                        href="#exampleModalToggleShowSecondName"
-                                        role="button">Show</button>
-                                    <button type="button"
-                                        class="btn btn-warning m-1"
-                                        data-bs-toggle="modal"
-                                        href="#exampleModalToggleEditSecondName"
-                                        role="button">Edit</button>
-                                    <button type="button"
-                                        class="btn btn-danger m-1"
-                                        data-bs-toggle="modal"
-                                        href="#exampleModalToggleDeleteSecondName"
-                                        role="button">Delete</button>
-                                </td>
-                            </tr>
-                            <tr class>
-                                <th class="pt-3" scope="row">3</th>
-                                <td class="pt-3">Cap</td>
-                                <td class="pt-3">Clothing</td>
-                                <td class="pt-3">Red headdress</td>
-                                <td class="pt-3 ">50$</td>
-                                <td>
-                                    <button type="button"
-                                        class="btn btn-primary m-1"
-                                        data-bs-toggle="modal"
-                                        href="#exampleModalToggleShowThirdName"
-                                        role="button">Show</button>
-                                    <button type="button"
-                                        class="btn btn-warning m-1"
-                                        data-bs-toggle="modal"
-                                        href="#exampleModalToggleEditThirdName"
-                                        role="button">Edit</button>
-                                    <button type="button"
-                                        class="btn btn-danger m-1"
-                                        data-bs-toggle="modal"
-                                        href="#exampleModalToggleDeleteThirdName"
-                                        role="button">Delete</button>
-                                </td>
-                            </tr>
-                        
-
-                        </tbody>
-                    </table>
-
+                <!-- Sales Chart Start -->
+                <div class="container-fluid pt-4 px-4 charts">
+                    <div class="row g-4">
+                        <div class="col-sm-12 col-xl-6">
+                            <div class="bg-light text-center rounded p-4">
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <h6 class="mb-0">Users</h6>
+                                    <a href="#" class="chart-header" data-section="users">Show All</a>
+                                </div>
+                                <canvas class="salse-revenue"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-xl-6 ">
+                            <div class="bg-light text-center rounded p-4">
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <h6 class="mb-0">Sales</h6>
+                                    <a href="#" class="chart-header" data-section="orders">Show All</a>
+                                    <!-- <a href="">Show All</a> -->
+                                </div>
+                                <canvas class="worldwide-sales"></canvas>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="d-flex justify-content-center mt-4">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#"
-                                    aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link"
-                                    href="#">1</a></li>
-                            <li class="page-item"><a class="page-link"
-                                    href="#">2</a></li>
-                            <li class="page-item"><a class="page-link"
-                                    href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                <!-- Sales Chart End -->
+
+                <!-- Recent Sales Start -->
+                <div class="container-fluid pt-4 px-4">
+                    <div class="bg-light text-center rounded p-4 charts">
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <h6 class="mb-0">Recent Salse</h6>
+                            <a href="#" class="chart-header" data-section="orders">Show All</a>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                                <thead>
+                                    <tr class="text-dark">
+                                        <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Invoice</th>
+                                        <th scope="col">Customer</th>
+                                        <th scope="col">Amount</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input class="form-check-input" type="checkbox"></td>
+                                        <td>01 Jan 2045</td>
+                                        <td>INV-0123</td>
+                                        <td>Jhon Doe</td>
+                                        <td>$123</td>
+                                        <td>Paid</td>
+                                        <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input class="form-check-input" type="checkbox"></td>
+                                        <td>01 Jan 2045</td>
+                                        <td>INV-0123</td>
+                                        <td>Jhon Doe</td>
+                                        <td>$123</td>
+                                        <td>Paid</td>
+                                        <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input class="form-check-input" type="checkbox"></td>
+                                        <td>01 Jan 2045</td>
+                                        <td>INV-0123</td>
+                                        <td>Jhon Doe</td>
+                                        <td>$123</td>
+                                        <td>Paid</td>
+                                        <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input class="form-check-input" type="checkbox"></td>
+                                        <td>01 Jan 2045</td>
+                                        <td>INV-0123</td>
+                                        <td>Jhon Doe</td>
+                                        <td>$123</td>
+                                        <td>Paid</td>
+                                        <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input class="form-check-input" type="checkbox"></td>
+                                        <td>01 Jan 2045</td>
+                                        <td>INV-0123</td>
+                                        <td>Jhon Doe</td>
+                                        <td>$123</td>
+                                        <td>Paid</td>
+                                        <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
+                <!-- Recent Sales End -->
+            
+
             </div>
             <!-----------------  analytics End --------------->
 
             <!-----------------  users Start --------------->
+            <!-- User Modal start -->
+            <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <form id="userForm">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="userModalLabel">Add User</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="Enter username" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter email" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Enter password" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="role" class="form-label">Role</label>
+                            <select class="form-select" id="role" required>
+                            <option value="">Select role</option>
+                            <option value="admin">Admin</option>
+                            <option value="merchant">Merchant</option>
+                            <option value="user">User</option>
+                            </select>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary w-100">Confirm</button>
+                    </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+            <!-- User Modal end -->
+            
             <div id="users-section" class="section" style="display:none;">
+                <h1 class="text-center mt-5 mb-3  ">
+                    System users
+                </h1>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userModal">
+                        <i class="fa fa-user-plus me-2"></i>Add User
+                    </button>
+                    <div class="input-group w-50">
+                        <input type="text" class="form-control" placeholder="Search by name">
+                        <input type="text" class="form-control" placeholder="Search by email">
+                        <input type="text" class="form-control" placeholder="Search by role">
+                        <button class="btn btn-outline-secondary">Search</button>
+                    </div>
+                </div>
+                <table class="table table-hover align-middle text-center">
+                    <thead class="table-light">
+                        <tr>
+                            <th><input type="checkbox"></th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>mohamed12</td>
+                            <td>MohamedAli253@gmail.com</td>
+                            <td><span class="badge bg-primary">Admin</span></td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-light" data-bs-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#userModal">
+                                            <i class="fa fa-edit me-2"></i>Edit
+                                        </a></li>
+                                        <li><a class="dropdown-item text-danger" href="#"><i class="fa fa-trash me-2"></i>Delete</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>mohamed12</td>
+                            <td>MohamedAli253@gmail.com</td>
+                            <td><span class="badge bg-success">Merchant</span></td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-light" data-bs-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#"><i class="fa fa-edit me-2"></i>Edit</a></li>
+                                        <li><a class="dropdown-item text-danger" href="#"><i class="fa fa-trash me-2"></i>Delete</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>mohamed12</td>
+                            <td>MohamedAli253@gmail.com</td>
+                            <td><span class="badge bg-secondary">User</span></td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-light" data-bs-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#"><i class="fa fa-edit me-2"></i>Edit</a></li>
+                                        <li><a class="dropdown-item text-danger" href="#"><i class="fa fa-trash me-2"></i>Delete</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>mohamed12</td>
+                            <td>MohamedAli253@gmail.com</td>
+                            <td><span class="badge bg-secondary">User</span></td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-light" data-bs-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#"><i class="fa fa-edit me-2"></i>Edit</a></li>
+                                        <li><a class="dropdown-item text-danger" href="#"><i class="fa fa-trash me-2"></i>Delete</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>mohamed12</td>
+                            <td>MohamedAli253@gmail.com</td>
+                            <td><span class="badge bg-secondary">User</span></td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-light" data-bs-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#"><i class="fa fa-edit me-2"></i>Edit</a></li>
+                                        <li><a class="dropdown-item text-danger" href="#"><i class="fa fa-trash me-2"></i>Delete</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>mohamed12</td>
+                            <td>MohamedAli253@gmail.com</td>
+                            <td><span class="badge bg-secondary">User</span></td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-light" data-bs-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#"><i class="fa fa-edit me-2"></i>Edit</a></li>
+                                        <li><a class="dropdown-item text-danger" href="#"><i class="fa fa-trash me-2"></i>Delete</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>mohamed12</td>
+                            <td>MohamedAli253@gmail.com</td>
+                            <td><span class="badge bg-secondary">User</span></td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-light" data-bs-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#"><i class="fa fa-edit me-2"></i>Edit</a></li>
+                                        <li><a class="dropdown-item text-danger" href="#"><i class="fa fa-trash me-2"></i>Delete</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>mohamed12</td>
+                            <td>MohamedAli253@gmail.com</td>
+                            <td><span class="badge bg-secondary">User</span></td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-light" data-bs-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#"><i class="fa fa-edit me-2"></i>Edit</a></li>
+                                        <li><a class="dropdown-item text-danger" href="#"><i class="fa fa-trash me-2"></i>Delete</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>mohamed12</td>
+                            <td>MohamedAli253@gmail.com</td>
+                            <td><span class="badge bg-secondary">User</span></td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-light" data-bs-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#"><i class="fa fa-edit me-2"></i>Edit</a></li>
+                                        <li><a class="dropdown-item text-danger" href="#"><i class="fa fa-trash me-2"></i>Delete</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>mohamed12</td>
+                            <td>MohamedAli253@gmail.com</td>
+                            <td><span class="badge bg-secondary">User</span></td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-light" data-bs-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#"><i class="fa fa-edit me-2"></i>Edit</a></li>
+                                        <li><a class="dropdown-item text-danger" href="#"><i class="fa fa-trash me-2"></i>Delete</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+                <nav>
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- <div id="users-section" class="section" style="display:none;">
                 <h1 class="text-center mt-5 mb-3  ">
                     System users
                 </h1>
@@ -831,7 +1076,7 @@
                         </ul>
                     </nav>
                 </div>
-            </div>
+            </div> -->
             <!-----------------  users End --------------->
 
             <!-----------------  categories Start --------------->
