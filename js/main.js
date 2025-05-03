@@ -1,22 +1,22 @@
 //-----------------login-----------------
 // Sample user data for testing
-const users = [
-    {
-        username: 'user',
-        email: 'test@example.com',
-        password: '123456',
-        role: 'user'
-    },
-    {
-        username: 'admin',
-        email: 'admin@example.com', 
-        password: 'admin123',
-        role: 'admin'
-    }
-];
+// const users = [
+//     {
+//         username: 'user',
+//         email: 'test@example.com',
+//         password: '123456',
+//         role: 'user'
+//     },
+//     {
+//         username: 'admin',
+//         email: 'admin@example.com', 
+//         password: 'admin123',
+//         role: 'admin'
+//     }
+// ];
 
-// Store users in localStorage
-localStorage.setItem('users', JSON.stringify(users));
+// // Store users in localStorage
+// localStorage.setItem('users', JSON.stringify(users));
 
 
 
@@ -310,7 +310,11 @@ document.addEventListener('DOMContentLoaded', function() {
 class UserManager {
     constructor() {
         // Initialize with sample data if no users exist
-        if (!localStorage.getItem('users')) {
+        const storedUsers = localStorage.getItem('users');
+        console.log('Stored users:', storedUsers);
+        
+        if (!storedUsers) {
+            console.log('No stored users found, initializing with sample data');
             this.users = [
                 { username: 'admin1', email: 'admin1@example.com', password: 'admin123', role: 'admin' },
                 { username: 'merchant1', email: 'merchant1@example.com', password: 'merchant123', role: 'merchant' },
@@ -318,12 +322,16 @@ class UserManager {
             ];
             this.saveUsers();
         } else {
-            this.users = JSON.parse(localStorage.getItem('users'));
+            console.log('Loading stored users');
+            this.users = JSON.parse(storedUsers);
         }
         
         this.currentUser = null;
+        this.currentPage = 1;
+        this.usersPerPage = 10;
         this.initializeEventListeners();
         this.renderUsers();
+        this.updatePagination();
     }
 
     initializeEventListeners() {
@@ -342,26 +350,96 @@ class UserManager {
             searchButton.addEventListener('click', () => this.handleSearch());
         }
 
-        // Delete user event delegation
-        const tbody = document.querySelector('tbody');
-        if (tbody) {
-            tbody.addEventListener('click', (e) => {
-                if (e.target.closest('.dropdown-item.text-danger')) {
-                    const row = e.target.closest('tr');
-                    const username = row.cells[1].textContent;
-                    this.deleteUser(username);
-                }
+        // Reset search and show all users
+        const resetButton = document.querySelector('.resetsearch');
+        if (resetButton) {
+            resetButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Clear all search inputs
+                const searchInputs = document.querySelectorAll('.input-group input[type="text"]');
+                searchInputs.forEach(input => {
+                    input.value = '';
+                });
+                
+                // Reset to first page and show all users
+                this.currentPage = 1;
+                this.renderUsers(this.users);
+                this.updatePagination();
             });
+        }
 
-            // Edit user event delegation
-            tbody.addEventListener('click', (e) => {
-                if (e.target.closest('.dropdown-item:not(.text-danger)')) {
-                    const row = e.target.closest('tr');
-                    const username = row.cells[1].textContent;
-                    this.editUser(username);
+        // Pagination event listeners
+        const pagination = document.querySelector('.pagination');
+        if (pagination) {
+            pagination.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (e.target.classList.contains('page-link')) {
+                    const pageText = e.target.textContent;
+                    if (pageText === '«') {
+                        this.currentPage = Math.max(1, this.currentPage - 1);
+                    } else if (pageText === '»') {
+                        this.currentPage = Math.min(this.getTotalPages(), this.currentPage + 1);
+                    } else {
+                        this.currentPage = parseInt(pageText);
+                    }
+                    this.renderUsers();
+                    this.updatePagination();
                 }
             });
         }
+
+        // Set up event delegation for edit and delete actions
+        document.addEventListener('click', (e) => {
+            const dropdownItem = e.target.closest('.dropdown-item');
+            if (!dropdownItem) return;
+
+            const row = dropdownItem.closest('tr');
+            if (!row) return;
+
+            const username = row.cells[1].textContent;
+            
+            if (dropdownItem.classList.contains('text-danger')) {
+                // Delete action
+                this.deleteUser(username);
+            } else {
+                // Edit action
+                this.editUser(username);
+            }
+        });
+    }
+
+    getTotalPages() {
+        return Math.ceil(this.users.length / this.usersPerPage);
+    }
+
+    updatePagination() {
+        const pagination = document.querySelector('.pagination');
+        if (!pagination) return;
+
+        const totalPages = this.getTotalPages();
+        let paginationHTML = `
+            <li class="page-item ${this.currentPage === 1 ? 'disabled' : ''}">
+                <a class="page-link" href="#">&laquo;</a>
+            </li>
+        `;
+
+        for (let i = 1; i <= totalPages; i++) {
+            paginationHTML += `
+                <li class="page-item ${this.currentPage === i ? 'active' : ''}">
+                    <a class="page-link" href="#">${i}</a>
+                </li>
+            `;
+        }
+
+        paginationHTML += `
+            <li class="page-item ${this.currentPage === totalPages ? 'disabled' : ''}">
+                <a class="page-link" href="#">&raquo;</a>
+            </li>
+        `;
+
+        pagination.innerHTML = paginationHTML;
     }
 
     handleUserSubmit() {
@@ -375,35 +453,50 @@ class UserManager {
             return;
         }
 
-        if (this.currentUser) {
-            // Update existing user
-            const userIndex = this.users.findIndex(u => u.username === this.currentUser.username);
-            if (userIndex !== -1) {
-                this.users[userIndex] = { username, email, password, role };
+        try {
+            if (this.currentUser) {
+                // Update existing user
+                const userIndex = this.users.findIndex(u => u.username === this.currentUser.username);
+                if (userIndex !== -1) {
+                    this.users[userIndex] = { username, email, password, role };
+                    console.log('Updating user:', this.users[userIndex]); // Debug log
+                    this.saveUsers();
+                }
+                this.currentUser = null;
+            } else {
+                // Check if username already exists
+                if (this.users.some(u => u.username === username)) {
+                    alert('Username already exists');
+                    return;
+                }
+                // Add new user
+                const newUser = { username, email, password, role };
+                this.users.push(newUser);
+                console.log('Adding new user:', newUser); // Debug log
+                this.saveUsers();
             }
-            this.currentUser = null;
-        } else {
-            // Check if username already exists
-            if (this.users.some(u => u.username === username)) {
-                alert('Username already exists');
-                return;
-            }
-            // Add new user
-            this.users.push({ username, email, password, role });
-        }
 
-        this.saveUsers();
-        this.renderUsers();
-        this.resetForm();
-        const modal = bootstrap.Modal.getInstance(document.getElementById('userModal'));
-        if (modal) {
-            modal.hide();
+            this.renderUsers();
+            this.resetForm();
+            const modal = bootstrap.Modal.getInstance(document.getElementById('userModal'));
+            if (modal) {
+                modal.hide();
+            }
+        } catch (error) {
+            console.error('Error handling user submit:', error);
+            alert('An error occurred while saving the user');
         }
     }
 
     handleSearch() {
-        const searchInputs = document.querySelectorAll('.input-group input');
+        const searchInputs = document.querySelectorAll('.input-group input[type="text"]');
         const searchTerms = Array.from(searchInputs).map(input => input.value.toLowerCase());
+
+        // If all search terms are empty, show all users
+        if (searchTerms.every(term => term === '')) {
+            this.renderUsers(this.users);
+            return;
+        }
 
         const filteredUsers = this.users.filter(user => {
             return (
@@ -413,29 +506,41 @@ class UserManager {
             );
         });
 
+        this.currentPage = 1; // Reset to first page when searching
         this.renderUsers(filteredUsers);
     }
 
     deleteUser(username) {
         if (confirm('Are you sure you want to delete this user?')) {
-            this.users = this.users.filter(user => user.username !== username);
-            this.saveUsers();
-            this.renderUsers();
+            try {
+                this.users = this.users.filter(user => user.username !== username);
+                console.log('Deleting user:', username);
+                this.saveUsers();
+                this.renderUsers();
+            } catch (error) {
+                console.error('Error deleting user:', error);
+                alert('An error occurred while deleting the user');
+            }
         }
     }
 
     editUser(username) {
-        const user = this.users.find(u => u.username === username);
-        if (user) {
-            this.currentUser = user;
-            document.getElementById('username').value = user.username;
-            document.getElementById('email').value = user.email;
-            document.getElementById('password').value = user.password;
-            document.getElementById('role').value = user.role;
-            
-            document.getElementById('userModalLabel').textContent = 'Edit User';
-            const modal = new bootstrap.Modal(document.getElementById('userModal'));
-            modal.show();
+        try {
+            const user = this.users.find(u => u.username === username);
+            if (user) {
+                this.currentUser = user;
+                document.getElementById('username').value = user.username;
+                document.getElementById('email').value = user.email;
+                document.getElementById('password').value = user.password;
+                document.getElementById('role').value = user.role;
+                
+                document.getElementById('userModalLabel').textContent = 'Edit User';
+                const modal = new bootstrap.Modal(document.getElementById('userModal'));
+                modal.show();
+            }
+        } catch (error) {
+            console.error('Error editing user:', error);
+            alert('An error occurred while editing the user');
         }
     }
 
@@ -448,16 +553,33 @@ class UserManager {
     }
 
     saveUsers() {
-        localStorage.setItem('users', JSON.stringify(this.users));
+        try {
+            console.log('Saving users:', this.users); // Debug log
+            localStorage.setItem('users', JSON.stringify(this.users));
+            console.log('Users saved successfully'); // Debug log
+        } catch (error) {
+            console.error('Error saving users:', error);
+        }
     }
 
     renderUsers(usersToRender = this.users) {
-        const tbody = document.querySelector('tbody');
+        const table = document.querySelector('.usersTable');
+        if (!table) return;
+
+        // Add Bootstrap table classes
+        table.classList.add('table', 'table-hover', 'align-middle', 'text-center');
+        
+        const tbody = table.querySelector('tbody');
         if (!tbody) return;
 
         tbody.innerHTML = '';
 
-        usersToRender.forEach(user => {
+        // Calculate pagination
+        const startIndex = (this.currentPage - 1) * this.usersPerPage;
+        const endIndex = startIndex + this.usersPerPage;
+        const paginatedUsers = usersToRender.slice(startIndex, endIndex);
+
+        paginatedUsers.forEach(user => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td><input type="checkbox"></td>
@@ -468,14 +590,16 @@ class UserManager {
                     <div class="dropdown">
                         <button class="btn btn-light" data-bs-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#"><i class="fa fa-edit me-2"></i>Edit</a></li>
-                            <li><a class="dropdown-item text-danger" href="#"><i class="fa fa-trash me-2"></i>Delete</a></li>
+                            <li><a class="dropdown-item edit-user" href="#"><i class="fa fa-edit me-2"></i>Edit</a></li>
+                            <li><a class="dropdown-item text-danger delete-user" href="#"><i class="fa fa-trash me-2"></i>Delete</a></li>
                         </ul>
                     </div>
                 </td>
             `;
             tbody.appendChild(tr);
         });
+
+        this.updatePagination();
     }
 
     getRoleBadgeClass(role) {
