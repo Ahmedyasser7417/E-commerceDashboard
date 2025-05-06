@@ -54,7 +54,7 @@
                         <i class="fa fa-user me-lg-2"></i>
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
-                    <div class="ms-3 sidenav">
+                    <div class="ms-3 sidenav userName">
                         <h6 class="mb-0">Ahmed Yasser</h6>
                         <span>Admin</span>
                     </div>
@@ -149,14 +149,14 @@
                         </div>
                     </div>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <a href="#" class="nav-link dropdown-toggle userName" data-bs-toggle="dropdown">
                             <!-- <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;"> -->
                             <i class="fa fa-user me-lg-2"></i>
                             <span class="d-none d-lg-inline-flex">Ahmed Yasser</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">Change password</a>
-                            <a href="login.html" class="dropdown-item">Log Out</a>
+                            <a href="login.html" class="dropdown-item" onclick="handleLogout()">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -169,7 +169,7 @@
                     <div class="row g-4">
                         <div class="col-sm-6 col-xl-3">
                             <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                                <i class="fa fa-chart-line fa-3x" style="color: #915ef6;"></i>
+                                <i class="fa-solid fa-cart-shopping fa-3x" style="color: #915ef6;"></i>
                                 <div class="ms-3">
                                     <p class="mb-2">Today Sale</p>
                                     <h6 class="mb-0">$1234</h6>
@@ -178,7 +178,7 @@
                         </div>
                         <div class="col-sm-6 col-xl-3">
                             <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                                <i class="fa fa-chart-bar fa-3x" style="color: #915ef6;"></i>
+                                <i class="fa-solid fa-chart-pie fa-3x" style="color: #915ef6;"></i>
                                 <div class="ms-3">
                                     <p class="mb-2">Total Sale</p>
                                     <h6 class="mb-0">$1234</h6>
@@ -187,18 +187,18 @@
                         </div>
                         <div class="col-sm-6 col-xl-3">
                             <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                                <i class="fa fa-chart-area fa-3x" style="color: #915ef6;"></i>
+                                <i class="fa-solid fa-user fa-3x" style="color: #915ef6;"></i>
                                 <div class="ms-3">
-                                    <p class="mb-2">Today Revenue</p>
+                                    <p class="mb-2">Total Users</p>
                                     <h6 class="mb-0">$1234</h6>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6 col-xl-3">
                             <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                                <i class="fa fa-chart-pie fa-3x" style="color: #915ef6;"></i>
+                                <i class="fa-solid fa-users fa-3x" style="color: #915ef6;"></i>
                                 <div class="ms-3">
-                                    <p class="mb-2">Total Revenue</p>
+                                    <p class="mb-2">User Online</p>
                                     <h6 class="mb-0">$1234</h6>
                                 </div>
                             </div>
@@ -210,23 +210,23 @@
                 <!-- Sales Chart Start -->
                 <div class="container-fluid pt-4 px-4 charts">
                     <div class="row g-4">
-                        
                         <div class="col-sm-12 col-xl-6">
                             <div class="bg-light text-center rounded p-4">
                                 <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <h6 class="mb-0">Sales</h6>
+                                    <h6 class="mb-0">Sales and Revenue</h6>
                                     <a href="#" class="chart-header" data-section="users">Show All</a>
                                 </div>
                                 <canvas class="salse-revenue"></canvas>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-xl-6 " style="height: 270px;">
+                        <div class="col-sm-12 col-xl-6">
                             <div class="bg-light text-center rounded p-4 h-100">
                                 <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <h6 class="mb-0">Users</h6>
+                                    <h6 class="mb-0">Sales</h6>
                                     <a href="#" class="chart-header" data-section="orders">Show All</a>
+                                    <!-- <a href="">Show All</a> -->
                                 </div>
-                                <canvas class="doughnut-chart"></canvas>
+                                <canvas class="worldwide-sales"></canvas>
                             </div>
                         </div>
                     </div>
@@ -616,16 +616,16 @@
                         <div class="col-sm-12 col-xl-6">
                             <div class="bg-light text-center rounded p-4">
                                 <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <h6 class="mb-0">Sales</h6>
+                                    <h6 class="mb-0">Sales and Revenue</h6>
                                     <a href="#" class="chart-header" data-section="users">Show All</a>
                                 </div>
                                 <canvas class="salse-revenue"></canvas>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-xl-6 ">
-                            <div class="bg-light text-center rounded p-4">
+                        <div class="col-sm-12 col-xl-6">
+                            <div class="bg-light text-center rounded p-4 h-100">
                                 <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <h6 class="mb-0">Sales and Revenue</h6>
+                                    <h6 class="mb-0">Sales</h6>
                                     <a href="#" class="chart-header" data-section="orders">Show All</a>
                                     <!-- <a href="">Show All</a> -->
                                 </div>

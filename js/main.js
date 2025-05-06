@@ -1,24 +1,4 @@
 //-----------------login-----------------
-// Sample user data for testing
-// const users = [
-//     {
-//         username: 'user',
-//         email: 'test@example.com',
-//         password: '123456',
-//         role: 'user'
-//     },
-//     {
-//         username: 'admin',
-//         email: 'admin@example.com', 
-//         password: 'admin123',
-//         role: 'admin'
-//     }
-// ];
-
-// // Store users in localStorage
-// localStorage.setItem('users', JSON.stringify(users));
-
-
 
 $(document).ready(function() {
     const $loginForm = $('#loginForm');
@@ -137,51 +117,11 @@ $(document).ready(function() {
     };
     spinner();
     
-    
-    // Back to top button
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 300) {
-            $('.back-to-top').fadeIn('slow');
-        } else {
-            $('.back-to-top').fadeOut('slow');
-        }
-    });
-    $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
-        return false;
-    });
-
 
     // Sidebar Toggler
     $('.sidebar-toggler').click(function () {
         $('.sidebar, .content').toggleClass("open");
         return false;
-    });
-
-
-    // Progress Bar
-    $('.pg-bar').waypoint(function () {
-        $('.progress .progress-bar').each(function () {
-            $(this).css("width", $(this).attr("aria-valuenow") + '%');
-        });
-    }, {offset: '80%'});
-
-
-    // Calender
-    $('#calender').datetimepicker({
-        inline: true,
-        format: 'L'
-    });
-
-
-    // Testimonials carousel
-    $(".testimonial-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1000,
-        items: 1,
-        dots: true,
-        loop: true,
-        nav : false
     });
 
 
@@ -217,32 +157,6 @@ $(document).ready(function() {
         });
     });
 
-
-
-
-    // Doughnut Chart
-    $(".doughnut-chart").each(function(index, canvas) {
-        var ctx = canvas.getContext("2d");
-        // Now you can create a chart for each canvas
-        new Chart(ctx, {
-            type: "doughnut",
-        data: {
-            labels: ["Users", "Sellers", "Admins"],
-            datasets: [{
-                backgroundColor: [
-                    "#915ef6",
-                    "#3b285f",
-                    "#327aff"
-                ],
-                data: [60, 20, 20]
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false
-        }
-        });
-    });
 
     // Salse & Revenue Chart
     $(".salse-revenue").each(function(index, canvas) {
@@ -618,4 +532,33 @@ class UserManager {
 document.addEventListener('DOMContentLoaded', () => {
     new UserManager();
 });
+
+// Function to update username display
+function updateUsernameDisplay() {
+    const userNameElements = document.querySelectorAll('.userName');
+    // Get the currentUser array from localStorage
+    const currentUser = JSON.parse(localStorage.getItem('currentUser')) || { username: 'user', role: 'user' };
+    const storedUsername = currentUser.username;
+    const storedRole = currentUser.role;
+    
+    userNameElements.forEach(element => {
+        if (element.tagName === 'DIV') {
+            // For the sidebar username
+            element.querySelector('h6').textContent = storedUsername;
+            element.querySelector('span').textContent = storedRole;
+        } else if (element.tagName === 'A') {
+            // For the navbar dropdown
+            element.querySelector('span').textContent = storedUsername;
+        }
+    });
+}
+
+// Function to handle logout
+function handleLogout() {
+    localStorage.removeItem('currentUser');
+    window.location.href = 'login.html';
+}
+
+// Call the function when the page loads
+document.addEventListener('DOMContentLoaded', updateUsernameDisplay);
 
